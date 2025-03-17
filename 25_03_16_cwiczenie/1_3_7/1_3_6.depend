@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1742216888 source:/home/oxy/Projekty_C/25_03_16_cwiczenie/1_3_6/main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+

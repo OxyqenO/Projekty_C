@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1741861226 source:/home/oxy/Projekty_C/Cwiczenie_25_03_13/z1_2_8/main.c
+	<stdio.h>
+	<stdlib.h>
+
