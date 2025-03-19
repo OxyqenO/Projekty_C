@@ -7,22 +7,22 @@ int main()
     int m;
     int k;
 
-    int e = 0;
-    int c = 1;
+    int wynik = 0;
+    int a = 1;
 
     scanf("%d", &n);
     scanf("%d", &m);
     scanf("%d", &k);
 
-    while (c < m)
+    while (a < m)
     {
-        e = n*c;
-        c += 1;
-        if (e > m)
+        wynik = n*a;
+        a += 1;
+        if (wynik > m)
         {
-            if (e < k)
-            {
-                printf("%d \n", e);
+            if (wynik < k)
+
+                printf("%d \n", wynik);
             }
 
         }
