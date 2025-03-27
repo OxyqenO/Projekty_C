@@ -1,0 +1,5 @@
+# ninja log v6
+3	77	1743085608433007883	CMakeFiles/untitled1.dir/library.c.o	e8bc5932327cd294
+77	86	1743085608507012970	libuntitled1.a	ee87e00bdfa06d73
+1	60	1743085622406915158	CMakeFiles/untitled1.dir/library.c.o	e8bc5932327cd294
+60	66	1743085622465918767	libuntitled1.a	ee87e00bdfa06d73
