@@ -5,8 +5,10 @@
 int funkcja(int *a, int *b) {
     int tempa = *a;
     int tempb = *b;
-    *a = tempb;
-    *b = tempa;
+    if (*a > *b) {
+        *a = tempb;
+        *b = tempa;
+    }
     return 1;
 }
 int main(void) {

@@ -1,20 +1,19 @@
+
 #include <stdio.h>
 
 int funkcja(int *a, int *b) {
     if (*a < *b || *b == *a) { //*pa i *pb odnoszą się do wartości przypisanych do adresów pa i pb
-        return *a;
+        return a;
     }
     else{
-        return *b;
+        return b;
     }
 
 }
 
 int main(void) {
-    int a;
-    int b;
-
-    scanf("%d %d", &a, &b);
+    int a = 10;
+    int b = 5;
 
     int *pa = &a; //*pa to pointer do adresu a
     int *pb = &b; //*pb to pointer do adresu b
@@ -22,6 +21,6 @@ int main(void) {
     printf("%p\n", &a); //print adres a
     printf("%p\n", &b); //print adres b
 
-    printf("%d",funkcja(pa, pb));
+    printf("%p",funkcja(pa, pb));
     return 0;
 }
