@@ -1,35 +1,85 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Kod zrobiony przez chat, idk jak działa, muszę to przeczytać dokładnie
+//Zadanie 4.2.1
 
-int main() {
-    int *tablica = NULL;
+int funkcja(int n, int tab[]) {
+    //nadaje wartość zero wszystkim elementom tablicy tab
+
+    for (int i = 0; i < n; i++) {
+        tab[i] = 0;
+    }
+
+    for (int i = 0; i < n; i++) {
+        printf("%d ", tab[i]);
+    }
+    printf("\n");
+}
+
+int funkcja2(int n, int tab[]) {
+    //zapisuje do kolejnych elementów tablicy wartości równe ich indeksom(do komórki o indeksie i funkcja ma zapisywać wartość i)
+
+    for (int i = 0; i < n; i++) {
+        tab[i] = i;
+    }
+
+    for (int i = 0; i < n; i++) {
+        printf("%d ", tab[i]);
+    }
+    printf("\n");
+}
+
+int funkcja3(int n, int tab[]) {
+    //podwaja wartość wszystkich elementów w tablicy tab
+
+    for (int i = 0; i < n; i++) {
+        tab[i] = tab[i] * 2;
+    }
+    for (int i = 0; i < n; i++) {
+        printf("%d ", tab[i]);
+    }
+    printf("\n");
+}
+
+int funkcja4(int n, int tab[]) {
+    //do wszystkich komórek tablicy tab wstawia wartości bezwzględne ich pierwotnych wartości
+    for (int i = 0; i < n; i++) {
+        for (int j = 1; j < i; j++) {
+            tab[i] = tab[i]*j;
+        }
+    }
+    for (int i = 0; i < n; i++) {
+        printf("%d ", tab[i]);
+    }
+    printf("\n");
+}
+
+int main(void) {
+    //Napisz funkcję, która otrzymuje dwa argumenty: nieujemną liczbę całkowitą n oraz n-elementową tablicę tab elementów typu int i
+
     int n;
-
-    printf("Podaj liczbę elementów: ");
     scanf("%d", &n);
 
-    // Alokacja pamięci dla n elementów
-    tablica = (int*)malloc(n * sizeof(int));
-    if (tablica == NULL) {
+    if (n<0) {
+        printf("Liczba n nie może być ujemna");
+        return 0;
+    }
+
+    int *tab = NULL;
+    // Alokacja pamięci
+    tab = (int*)malloc(n * sizeof(int));
+    if (tab == NULL) {
         printf("Błąd alokacji pamięci!\n");
-        return 1;
+        return 0;
     }
 
-    // Wpisywanie wartości od 1 do n
-    for (int i = 0; i < n; i++) {
-        tablica[i] = i + 1;  // Wartości od 1 do n
-    }
+    tab[n] = funkcja(n, tab);
 
-    // Wyświetlenie tablicy
-    printf("Tablica zawiera: ");
-    for (int i = 0; i < n; i++) {
-        printf("%d ", tablica[i]);
-    }
+    tab[n] = funkcja2(n, tab);
 
-    // Zwolnienie pamięci
-    free(tablica);
+    tab[n] = funkcja3(n, tab);
 
-    return 0;
+    tab[n] = funkcja4(n, tab);
+    return 1;
+
 }
