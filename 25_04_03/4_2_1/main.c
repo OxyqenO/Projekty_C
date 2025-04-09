@@ -44,8 +44,8 @@ int funkcja3(int n, int tab[]) {
 int funkcja4(int n, int tab[]) {
     //do wszystkich komórek tablicy tab wstawia wartości bezwzględne ich pierwotnych wartości
     for (int i = 0; i < n; i++) {
-        for (int j = 1; j < i; j++) {
-            tab[i] = tab[i]*j;
+        if (tab[i] <0) {
+            tab[i] = -tab[i];
         }
     }
     for (int i = 0; i < n; i++) {
