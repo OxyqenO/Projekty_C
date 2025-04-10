@@ -1,0 +1,502 @@
+#include <stdio.h>
+
+// 2.2.1
+int main() {
+    int n;
+    scanf("%d", &n);
+    if (n < 0)
+        printf("%d\n", -n);
+    else
+        printf("%d\n", n);
+    return 0;
+}
+
+
+// 2.2.2
+int main1() {
+    int n;
+    scanf("%d", &n);
+    int wynik = 1;
+
+    for (int i = 1; i <= n; i++) {
+        wynik *= i;
+    }
+
+    printf("%d\n", wynik);
+    return 0;
+}
+
+
+// 2.2.3
+int main2() {
+    int n;
+    scanf("%d", &n);
+    int k = 0;
+
+    while (k * (k + 1) / 2 <= n) {
+        k++;
+    }
+
+    printf("%d\n", k - 1);
+    return 0;
+}
+
+
+// 2.2.4
+int potega2(int n) {
+    int wynik = 1;
+    for (int i = 0; i < n; i++) {
+        wynik *= 2;
+    }
+    return wynik;
+}
+
+int main3() {
+    int n;
+    scanf("%d", &n);
+    printf("%d\n", potega2(n));
+    return 0;
+}
+
+
+// 2.2.5
+double potega2_2(int n) {
+    double wynik = 1.0;
+    if (n >= 0) {
+        for (int i = 0; i < n; i++) wynik *= 2;
+    } else {
+        for (int i = 0; i < -n; i++) wynik /= 2;
+    }
+    return wynik;
+}
+
+int main4() {
+    int n;
+    scanf("%d", &n);
+    printf("%f\n", potega2(n));
+    return 0;
+}
+
+
+// 2.2.6
+int min(int x, int y) {
+    return (x < y) ? x : y;
+}
+
+int main5() {
+    int a, b;
+    scanf("%d %d", &a, &b);
+    printf("%d\n", min(a, b));
+    return 0;
+}
+
+
+// 2.2.7
+double potega(int x, int m) {
+    double wynik = 1.0;
+    if (m >= 0) {
+        for (int i = 0; i < m; i++) wynik *= x;
+    } else {
+        for (int i = 0; i < -m; i++) wynik /= x;
+    }
+    return wynik;
+}
+
+int main6() {
+    int x, m;
+    scanf("%d %d", &x, &m);
+    if (x == 0 && m <= 0) {
+        printf("Nieokreślone\n");
+    } else {
+        printf("%f\n", potega(x, m));
+    }
+    return 0;
+}
+
+
+// 2.2.8
+int pierwiastek(int n) {
+    int i = 0;
+    while (i * i <= n) {
+        i++;
+    }
+    return i - 1;
+}
+
+int main7() {
+    int n;
+    scanf("%d", &n);
+    printf("%d\n", pierwiastek(n));
+    return 0;
+}
+
+// 2.2.15
+void rozklad3Kwadraty(int n) {
+    for (int a = 1; a * a <= n; a++) {
+        for (int b = a; b * b <= n; b++) {
+            for (int c = b; c * c <= n; c++) {
+                if (a * a + b * b + c * c == n) {
+                    printf("%d^2 + %d^2 + %d^2 = %d\n", a, b, c, n);
+                }
+            }
+        }
+    }
+}
+
+int main8() {
+    int n;
+    scanf("%d", &n);
+    rozklad3Kwadraty(n);
+    return 0;
+}
+// 2.2.16
+void rozklad4Kwadraty(int n) {
+    for (int a = 0; a * a <= n; a++) {
+        for (int b = a; a*a + b*b <= n; b++) {
+            for (int c = b; a*a + b*b + c*c <= n; c++) {
+                for (int d = c; a*a + b*b + c*c + d*d <= n; d++) {
+                    if (a*a + b*b + c*c + d*d == n) {
+                        printf("%d^2 + %d^2 + %d^2 + %d^2 = %d\n", a, b, c, d, n);
+                    }
+                }
+            }
+        }
+    }
+}
+
+int main9() {
+    int n;
+    scanf("%d", &n);
+    rozklad4Kwadraty(n);
+    return 0;
+}
+// 2.2.17
+int licznik = 0;
+
+void funkcja() {
+    licznik++;
+    printf("Liczba wywołań: %d\n", licznik);
+}
+
+int main10() {
+    funkcja();
+    funkcja();
+    funkcja();
+    return 0;
+}
+// 2.2.18
+void pseudo(double x0, int ile) {
+    double x = x0;
+    for (int i = 0; i < ile; i++) {
+        printf("%f\n", x);
+        x = 1 - x * x;
+    }
+}
+
+int main11() {
+    double x0;
+    int ile;
+    scanf("%lf %d", &x0, &ile);
+    pseudo(x0, ile);
+    return 0;
+}
+// 2.2.19
+int suma = 0;
+
+int sumaDotychczasowa(int x) {
+    suma += x;
+    return suma;
+}
+
+int main12() {
+    int x;
+    while (scanf("%d", &x) == 1) {
+        printf("Suma: %d\n", sumaDotychczasowa(x));
+    }
+    return 0;
+}
+// 2.2.20
+int silnia(int n) {
+    if (n <= 1) return 1;
+    return n * silnia(n - 1);
+}
+
+int main13() {
+    int n;
+    scanf("%d", &n);
+    printf("%d\n", silnia(n));
+    return 0;
+}
+// 2.2.21
+int ciag(int n) {
+    if (n == 0) return 1;
+    return 2 * ciag(n - 1) + 5;
+}
+
+int main14() {
+    int n;
+    scanf("%d", &n);
+    printf("%d\n", ciag(n));
+    return 0;
+}
+// 2.2.22
+int ciag(int n) {
+    if (n == 0 || n == 1) return 1;
+    return ciag(n - 1) + 2 * ciag(n - 2) + 3;
+}
+
+int main15() {
+    int n;
+    scanf("%d", &n);
+    printf("%d\n", ciag(n));
+    return 0;
+}
+// 2.2.23
+int fib(int n) {
+    if (n == 0) return 0;
+    if (n == 1) return 1;
+    return fib(n - 1) + fib(n - 2);
+}
+
+int main16() {
+    int n;
+    scanf("%d", &n);
+    printf("%d\n", fib(n));
+    return 0;
+}
+// 2.2.24
+int ciag(int n) {
+    if (n == 0 || n == 1) return 1;
+    if (n == 2) return 2;
+    return ciag(n - 1) + ciag(n - 2) + ciag(n - 3);
+}
+
+int main17() {
+    int n;
+    scanf("%d", &n);
+    printf("%d\n", ciag(n));
+    return 0;
+}
+// 2.2.25
+int ciag(int n) {
+    if (n == 0 || n == 1) return 1;
+    if (n % 2 == 0) // parzyste
+        return ciag(n - 1) + n;
+    else            // nieparzyste
+        return ciag(n - 1) * n;
+}
+
+int main18() {
+    int n;
+    scanf("%d", &n);
+    printf("a_%d = %d\n", n, ciag(n));
+    return 0;
+}
+
+// 2.2.26
+int ciag(int n) {
+    if (n == 0 || n == 1 || n == 2)
+        return 1;
+    if (n == 3)
+        return ciag(1) + ciag(2);
+    return ciag(n - 1) + ciag(n - 3);
+}
+
+int main19() {
+    int n;
+    scanf("%d", &n);
+    printf("%d\n", ciag(n));
+    return 0;
+}
+// 2.2.27
+int f(int n, int m) {
+    if (n == 0) return m;
+    if (m == 0) return n;
+    return f(n - 1, m) + f(n, m - 1);
+}
+
+int main20() {
+    int n, m;
+    scanf("%d %d", &n, &m);
+    printf("%d\n", f(n, m));
+    return 0;
+}
+// 2.2.28
+int min(int a, int b) {
+    return a < b ? a : b;
+}
+
+int f(int n, int m) {
+    if (n == 0) return m;
+    if (m == 0) return n;
+    return min(f(n - 1, m), f(n, m - 1)) + 1;
+}
+
+int main21() {
+    int n, m;
+    scanf("%d %d", &n, &m);
+    printf("%d\n", f(n, m));
+    return 0;
+}
+// 2.2.29
+int nwd(int a, int b) {
+    if (b == 0) return a;
+    return nwd(b, a % b);
+}
+
+int main22() {
+    int a, b;
+    scanf("%d %d", &a, &b);
+    printf("%d\n", nwd(a, b));
+    return 0;
+}
+// 2.2.30
+int znajdz(int n, int m) {
+    if (n % m == 0)
+        return n;
+    return znajdz(n - 1, m);
+}
+
+int main23() {
+    int n, m;
+    scanf("%d %d", &n, &m);
+    printf("%d\n", znajdz(n, m));
+    return 0;
+}
+// 2.2.31
+int pierwiastek(int m) {
+    int i = 0;
+    while (i * i <= m) i++;
+    return i - 1;
+}
+
+int funkcja(int m, int n) {
+    return pierwiastek(m); // drugi argument ignorowany
+}
+
+int main24() {
+    int m, n;
+    scanf("%d %d", &m, &n);
+    printf("%d\n", funkcja(m, n));
+    return 0;
+}
+// 2.2.32
+unsigned int maksimum(unsigned int a, unsigned int b, unsigned int c, unsigned int d, unsigned int e) {
+    unsigned int max = a;
+    if (b > max) max = b;
+    if (c > max) max = c;
+    if (d > max) max = d;
+    if (e > max) max = e;
+    return max;
+}
+
+int main25() {
+    unsigned int a, b, c, d, e;
+    scanf("%u %u %u %u %u", &a, &b, &c, &d, &e);
+    printf("Max: %u\n", maksimum(a, b, c, d, e));
+    return 0;
+}
+// 2.2.33
+unsigned int minimum(unsigned int a, unsigned int b, unsigned int c) {
+    unsigned int min = a;
+    if (b < min) min = b;
+    if (c < min) min = c;
+    return min;
+}
+
+int main26() {
+    unsigned int a, b, c;
+    scanf("%u %u %u", &a, &b, &c);
+    printf("Min: %u\n", minimum(a, b, c));
+    return 0;
+}
+// 2.2.34
+int liczba_parzystych(int a, int b, int c) {
+    int count = 0;
+    if (a % 2 == 0) count++;
+    if (b % 2 == 0) count++;
+    if (c % 2 == 0) count++;
+    return count;
+}
+
+int main27() {
+    int a, b, c;
+    scanf("%d %d %d", &a, &b, &c);
+    printf("Parzystych: %d\n", liczba_parzystych(a, b, c));
+    return 0;
+}
+// 2.2.35
+int liczba_dodatnich(int a, int b, int c) {
+    int count = 0;
+    if (a > 0) count++;
+    if (b > 0) count++;
+    if (c > 0) count++;
+    return count;
+}
+
+int main28() {
+    int a, b, c;
+    scanf("%d %d %d", &a, &b, &c);
+    printf("Dodatnich: %d\n", liczba_dodatnich(a, b, c));
+    return 0;
+}
+// 2.2.36
+int dzieli_sie(int a, int b) {
+    if (b == 0) return 0; // false
+    return (a % b == 0);  // 1 (true) lub 0 (false)
+}
+
+int main29() {
+    int a, b;
+    scanf("%d %d", &a, &b);
+    if (dzieli_sie(a, b))
+        printf("true\n");
+    else
+        printf("false\n");
+    return 0;
+}
+// 2.2.37
+double maksimum(double a, double b) {
+    return (a > b) ? a : b;
+}
+
+int main30() {
+    double x, y;
+    scanf("%lf %lf", &x, &y);
+    printf("Max: %.2lf\n", maksimum(x, y));
+    return 0;
+}
+// 2.2.38
+double minimum(double a, double b) {
+    return (a < b) ? a : b;
+}
+
+int main31() {
+    double x, y;
+    scanf("%lf %lf", &x, &y);
+    printf("Min: %.2lf\n", minimum(x, y));
+    return 0;
+}
+// 2.2.39
+double srednia(double a, double b) {
+    return (a + b) / 2.0;
+}
+
+int main32() {
+    double a, b;
+    scanf("%lf %lf", &a, &b);
+    printf("Średnia: %.2lf\n", srednia(a, b));
+    return 0;
+}
+
+// 2.2.40
+float srednia3(double a, double b, double c) {
+    return (float)((a + b + c) / 3.0);
+}
+
+int main33() {
+    double a, b, c;
+    scanf("%lf %lf %lf", &a, &b, &c);
+    printf("Średnia: %.2f\n", srednia3(a, b, c));
+    return 0;
+}

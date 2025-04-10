@@ -1,0 +1,215 @@
+#include <stdio.h>
+
+// 3.2.1
+int mniejsza(int *a, int *b) {
+    return (*a < *b) ? *a : *b;
+}
+
+int main() {
+    int x = 5, y = 8;
+    int wynik = mniejsza(&x, &y);
+    printf("Mniejsza z %d i %d to %d\n", x, y, wynik);
+    return 0;
+}
+// 3.2.2
+void mniejsza_do_zmiennej(int *a, int *b, int *wynik) {
+    *wynik = (*a < *b) ? *a : *b;
+}
+
+int main1() {
+    int x = 12, y = 7, wynik;
+    mniejsza_do_zmiennej(&x, &y, &wynik);
+    printf("Mniejsza z %d i %d to %d\n", x, y, wynik);
+    return 0;
+}
+// 3.2.3
+void wpisz_mniejsza(int *a, int *b) {
+    *a = (*a < *b) ? *a : *b;
+}
+
+int main2() {
+    int x = 10, y = 4;
+    wpisz_mniejsza(&x, &y);
+    printf("x po wpisaniu mniejszej wartości: %d\n", x);
+    return 0;
+}
+// 3.2.4
+void zamien_jesli_mniejszy(int *a, int *b) {
+    if (*b < *a) {
+        int temp = *a;
+        *a = *b;
+        *b = temp;
+    }
+}
+
+int main3() {
+    int x = 9, y = 3;
+    printf("Przed zamianą: x = %d, y = %d\n", x, y);
+    zamien_jesli_mniejszy(&x, &y);
+    printf("Po zamianie: x = %d, y = %d\n", x, y);
+    return 0;
+}
+// 3.2.5
+int suma_stalych(const int *a, const int *b) {
+    return *a + *b;
+}
+
+int main4() {
+    int x = 2, y = 3;
+    int wynik = suma_stalych(&x, &y);
+    printf("Suma %d i %d to %d\n", x, y, wynik);
+    return 0;
+}
+// 3.2.6
+void przypisz(int n, int *w) {
+    *w = n;
+}
+
+int main5() {
+    int x = 0;
+    przypisz(7, &x);
+    printf("Wartość x po przypisaniu: %d\n", x);
+    return 0;
+}
+
+// 3.2.7
+void zamien(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int main6() {
+    int x = 3, y = 7;
+    zamien(&x, &y);
+    printf("x = %d, y = %d\n", x, y);
+    return 0;
+}
+// 3.2.8
+void zamien_polka(int *a, int &b) {
+    int temp = *a;
+    *a = b;
+    b = temp;
+}
+
+// C nie obsługuje referencji — wersja tylko wskaźnikowa:
+void zamien_wskaznikowa(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int main7() {
+    int x = 2, y = 9;
+    zamien_wskaznikowa(&x, &y);
+    printf("x = %d, y = %d\n", x, y);
+    return 0;
+}
+// 3.2.9
+int* rezerwuj_int() {
+    return malloc(sizeof(int));
+}
+
+int main8() {
+    int *wsk = rezerwuj_int();
+    *wsk = 10;
+    printf("*wsk = %d\n", *wsk);
+    free(wsk);
+    return 0;
+}
+// 3.2.10
+double* rezerwuj_double() {
+    return malloc(sizeof(double));
+}
+
+int main9() {
+    double *wsk = rezerwuj_double();
+    *wsk = 3.14;
+    printf("*wsk = %lf\n", *wsk);
+    free(wsk);
+    return 0;
+}
+// 3.2.11
+int* rezerwuj_blok(int n) {
+    return malloc(n * sizeof(int));
+}
+
+int main10() {
+    int *tab = rezerwuj_blok(3);
+    tab[0] = 1; tab[1] = 2; tab[2] = 3;
+    for (int i = 0; i < 3; i++) {
+        printf("tab[%d] = %d\n", i, tab[i]);
+    }
+    free(tab);
+    return 0;
+}
+// 3.2.12
+double* rezerwuj_blok_double(int n) {
+    return malloc(n * sizeof(double));
+}
+
+int main11() {
+    double *tab = rezerwuj_blok_double(2);
+    tab[0] = 1.1; tab[1] = 2.2;
+    for (int i = 0; i < 2; i++) {
+        printf("tab[%d] = %.2f\n", i, tab[i]);
+    }
+    free(tab);
+    return 0;
+}
+// 3.2.13
+double funkcja(double (*f)(int), int x) {
+    return f(x);
+}
+
+double pierwiastek(int x) {
+    return sqrt(x);
+}
+
+int main12() {
+    int liczba = 9;
+    printf("Pierwiastek z %d to %.2f\n", liczba, funkcja(pierwiastek, liczba));
+    return 0;
+}
+
+// 3.2.14
+int suma(int a, int b) {
+    return a + b;
+}
+
+int iloczyn(int a, int b) {
+    return a * b;
+}
+
+int porownaj_funkcje(int (*f1)(int, int), int (*f2)(int, int), int x, int y) {
+    return f1(x, y) == f2(x, y);
+}
+
+int main13() {
+    printf("%d\n", porownaj_funkcje(suma, iloczyn, 2, 2));  // 4 == 4 -> 1
+    printf("%d\n", porownaj_funkcje(suma, iloczyn, 2, 3));  // 5 != 6 -> 0
+    return 0;
+}
+// 3.2.15
+void przepisz(const int *a, int *b) {
+    *b = *a;
+}
+
+int main14() {
+    int x = 11, y = 0;
+    przepisz(&x, &y);
+    printf("y = %d\n", y);
+    return 0;
+}
+// 3.2.16
+void przepisz_odwrotnie(int *a, const int *b) {
+    *a = *b;
+}
+
+int main15() {
+    int x = 0, y = 42;
+    przepisz_odwrotnie(&x, &y);
+    printf("x = %d\n", x);
+    return 0;
+}
+

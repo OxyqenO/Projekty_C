@@ -1,0 +1,447 @@
+// Zadanie 1.3.1
+#include <stdio.h>
+
+int main() {
+    int n;
+    scanf("%d", &n);
+    if (n < 0) n = -n;
+    printf("%d\n", n);
+    return 0;
+}
+
+
+// Zadanie 1.3.2
+
+int main1() {
+    int a, b;
+    scanf("%d %d", &a, &b);
+    if (a > b)
+        printf("%d\n", a);
+    else if (b > a)
+        printf("%d\n", b);
+    else
+        printf("Liczby są równe\n");
+    return 0;
+}
+
+
+// Zadanie 1.3.3
+
+int main2() {
+    int a, b, c, max;
+    scanf("%d %d %d", &a, &b, &c);
+    max = a;
+    if (b > max) max = b;
+    if (c > max) max = c;
+    printf("%d\n", max);
+    return 0;
+}
+
+
+// Zadanie 1.3.4
+
+int main3() {
+    int x, abs;
+    scanf("%d", &x);
+    abs = x < 0 ? -x : x;
+    printf("%d\n", abs);
+    return 0;
+}
+
+
+// Zadanie 1.3.5
+
+int main4() {
+    double a, b, c;
+    scanf("%lf %lf %lf", &a, &b, &c);
+    if (a + b > c && a + c > b && b + c > a)
+        printf("Mozna zbudowac trojkat\n");
+    else
+        printf("Nie mozna zbudowac trojkata\n");
+    return 0;
+}
+
+
+// Zadanie 1.3.6
+
+int main5() {
+    double a11, a12, b1, a21, a22, b2;
+    scanf("%lf %lf %lf", &a11, &a12, &b1);
+    scanf("%lf %lf %lf", &a21, &a22, &b2);
+
+    double W = a11 * a22 - a12 * a21;
+    double Wx = b1 * a22 - b2 * a12;
+    double Wy = a11 * b2 - a21 * b1;
+
+    if (W != 0) {
+        double x = Wx / W;
+        double y = Wy / W;
+        printf("x = %.2lf\ny = %.2lf\n", x, y);
+    } else {
+        if (Wx == 0 && Wy == 0)
+            printf("Uklad nieoznaczony\n");
+        else
+            printf("Uklad sprzeczny\n");
+    }
+    return 0;
+}
+
+
+// Zadanie 1.3.7
+
+int main6() {
+    double a11, a12, b1, a21, a22, b2;
+    scanf("%lf %lf %lf", &a11, &a12, &b1);
+    scanf("%lf %lf %lf", &a21, &a22, &b2);
+
+    double W = a11 * a22 - a12 * a21;
+    double Wx = b1 * a22 - b2 * a12;
+    double Wy = a11 * b2 - a21 * b1;
+
+    if (W != 0) {
+        double x = Wx / W;
+        double y = Wy / W;
+        printf("x = %.2lf\ny = %.2lf\n", x, y);
+    } else {
+        if (Wx == 0 && Wy == 0)
+            printf("Uklad nieoznaczony\n");
+        else
+            printf("Uklad sprzeczny\n");
+    }
+    return 0;
+}
+
+
+// Zadanie 1.3.8
+
+int main7() {
+    int wybor;
+    double a, b, pole;
+
+    printf("Wybierz figurę:\n");
+    printf("1 - Kwadrat\n");
+    printf("2 - Prostokąt\n");
+    printf("3 - Trójkąt\n");
+    printf("Twój wybór: ");
+    scanf("%d", &wybor);
+
+    if (wybor == 1) {
+        printf("Podaj bok kwadratu: ");
+        scanf("%lf", &a);
+        pole = a * a;
+        printf("Pole kwadratu: %.2lf\n", pole);
+    } else if (wybor == 2) {
+        printf("Podaj długość pierwszego boku prostokąta: ");
+        scanf("%lf", &a);
+        printf("Podaj długość drugiego boku prostokąta: ");
+        scanf("%lf", &b);
+        pole = a * b;
+        printf("Pole prostokąta: %.2lf\n", pole);
+    } else if (wybor == 3) {
+        printf("Podaj długość podstawy trójkąta: ");
+        scanf("%lf", &a);
+        printf("Podaj wysokość trójkąta: ");
+        scanf("%lf", &b);
+        pole = 0.5 * a * b;
+        printf("Pole trójkąta: %.2lf\n", pole);
+    } else {
+        printf("Niepoprawny wybór.\n");
+    }
+
+    return 0;
+}
+
+// 1.3.9
+int main8() {
+    double a, b, wynik;
+    int wybor;
+
+    printf("Podaj pierwszą liczbę: ");
+    scanf("%lf", &a);
+
+    printf("Podaj drugą liczbę: ");
+    scanf("%lf", &b);
+
+    printf("Wybierz operację:\n");
+    printf("1 - Dodawanie (+)\n");
+    printf("2 - Odejmowanie (-)\n");
+    printf("3 - Mnożenie (*)\n");
+    printf("4 - Dzielenie (/)\n");
+    printf("Twój wybór: ");
+    scanf("%d", &wybor);
+
+    if (wybor == 1) {
+        wynik = a + b;
+        printf("Wynik: %.2lf\n", wynik);
+    } else if (wybor == 2) {
+        wynik = a - b;
+        printf("Wynik: %.2lf\n", wynik);
+    } else if (wybor == 3) {
+        wynik = a * b;
+        printf("Wynik: %.2lf\n", wynik);
+    } else if (wybor == 4) {
+        if (b != 0) {
+            wynik = a / b;
+            printf("Wynik: %.2lf\n", wynik);
+        } else {
+            printf("Błąd: Dzielenie przez zero!\n");
+        }
+    } else {
+        printf("Niepoprawny wybór operacji.\n");
+    }
+
+    return 0;
+}
+
+
+// 1.4.1
+int main9() {
+    int m, n;
+    printf("Podaj liczby m i n: ");
+    scanf("%d %d", &m, &n);
+
+    printf("Wielokrotności %d mniejsze od %d:\n", m, n);
+    for (int i = m; i < n; i += m) {
+        printf("%d ", i);
+    }
+    printf("\n");
+    return 0;
+}
+
+
+// 1.4.2
+int main10() {
+    int m, n;
+    printf("Podaj liczby m i n: ");
+    scanf("%d %d", &m, &n);
+
+    printf("Pierwsze %d wielokrotności %d:\n", n, m);
+    for (int i = 1; i <= n; i++) {
+        printf("%d ", m * i);
+    }
+    printf("\n");
+    return 0;
+}
+
+
+// 1.4.3
+int main1() {
+    int n, m, k;
+    printf("Podaj liczby n, m i k: ");
+    scanf("%d %d %d", &n, &m, &k);
+
+    printf("Liczby podzielne przez %d w zakresie [%d, %d]:\n", n, m, k);
+    for (int i = m; i <= k; i++) {
+        if (i % n == 0) {
+            printf("%d ", i);
+        }
+    }
+    printf("\n");
+    return 0;
+}
+
+
+// 1.4.4
+int main12() {
+    int n;
+    printf("Podaj liczbę n: ");
+    scanf("%d", &n);
+
+    for (int i = n; i >= 0; i--) {
+        printf("%d ", i);
+    }
+    printf("\n");
+    return 0;
+}
+
+
+// 1.4.5
+int main13() {
+    int n, suma = 0;
+    printf("Podaj liczbę n: ");
+    scanf("%d", &n);
+
+    for (int i = 0; i <= n; i++) {
+        suma += i * i;
+    }
+    printf("Suma kwadratów od 0 do %d wynosi: %d\n", n, suma);
+    return 0;
+}
+
+
+// 1.4.6
+int main14() {
+    int n;
+    int silnia = 1;
+
+    printf("Podaj liczbę n: ");
+    scanf("%d", &n);
+
+    if (n < 0) {
+        printf("Silnia nie jest zdefiniowana dla liczb ujemnych.\n");
+        return 1;
+    }
+
+    for (int i = 2; i <= n; i++) {
+        silnia *= i;
+    }
+
+    printf("%d! = %d\n", n, silnia);
+    return 0;
+}
+
+
+// 1.4.7
+int main15() {
+    int n, m;
+    printf("Podaj liczby n i m (n < m): ");
+    scanf("%d %d", &n, &m);
+
+    for (int i = n; i < m; i++) {
+        printf("%d ", i);
+    }
+    printf("\n");
+    return 0;
+}
+
+
+// 1.4.8
+int main16() {
+    int n;
+    printf("Podaj ile liczb Fibonacciego wypisać: ");
+    scanf("%d", &n);
+
+    int a = 0, b = 1, temp;
+
+    for (int i = 0; i < n; i++) {
+        printf("%d ", a);
+        temp = a + b;
+        a = b;
+        b = temp;
+    }
+    printf("\n");
+    return 0;
+}
+
+
+// 1.4.9
+int main17() {
+    int m, n;
+    printf("Podaj liczby m i n: ");
+    scanf("%d %d", &m, &n);
+
+    for (int i = m; i < n; i += m) {
+        printf("%d ", i);
+    }
+    printf("\n");
+    return 0;
+}
+
+
+// 1.4.10
+int main18() {
+    int n;
+    scanf("%d", &n);
+
+    int i = 0;
+    while (i * i <= n) {
+        i++;
+    }
+
+    printf("%d\n", i - 1);
+    return 0;
+}
+
+
+// 1.4.11
+int main19() {
+    int a, b, c, d, x, y, maxInt = 1000;
+
+    scanf("%d %d %d %d", &a, &b, &c, &d);
+
+    // a)
+    for (x = 0; x <= maxInt; x++) {
+        int val = a * x * x + b * x + c;
+        if (abs(val) > d) {
+            printf("a) %d\n", x);
+            break;
+        }
+    }
+
+    // b)
+    for (x = 0; x <= maxInt; x++) {
+        int val = 5 * x * x * x + 2 * a * x + b * c;
+        if (val > d) {
+            printf("b) %d\n", x);
+            break;
+        }
+    }
+
+    // c)
+    for (x = 0; x <= maxInt; x++) {
+        int val = 5 * x * x * x + a * x + b * c;
+        int sum = 0;
+        for (y = 1; y <= val; y++) {
+            if (val % y == 0) sum++;
+        }
+        if (sum > d) {
+            printf("c) %d\n", x);
+            break;
+        }
+    }
+
+    return 0;
+}
+
+
+// 1.4.12
+int main20() {
+    int n;
+    scanf("%d", &n);
+
+    for (int i = 1; i <= n; i++) {
+        int divisible = 0;
+        for (int j = 1; j <= i; j++) {
+            if (i % j == 0) divisible++;
+        }
+        if (divisible % 2 == 0) {
+            printf("%d\n", i);
+        }
+    }
+
+    return 0;
+}
+
+
+// 1.4.13
+int main21() {
+    int n;
+    scanf("%d", &n);
+
+    int sum = 0;
+    for (int i = 1; i <= n; i++) {
+        sum += i * i * i;
+    }
+
+    printf("%d\n", sum);
+    return 0;
+}
+
+
+// 1.4.14
+int main22() {
+    int n;
+    scanf("%d", &n);
+
+    for (int a = 1; a < n; a++) {
+        for (int b = a; b < n; b++) {
+            for (int c = b; c < n; c++) {
+                if (a * a + b * b == c * c) {
+                    printf("(%d, %d, %d)\n", a, b, c);
+                }
+            }
+        }
+    }
+
+    return 0;
+}

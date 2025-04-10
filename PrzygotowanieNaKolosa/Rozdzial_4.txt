@@ -1,0 +1,266 @@
+#include <stdio.h>
+
+// 4.2.1
+void zad421a(int n, int tab[]) {
+    for (int i = 0; i < n; i++) tab[i] = 0;
+}
+
+void zad421b(int n, int tab[]) {
+    for (int i = 0; i < n; i++) tab[i] = i * 2;  // np. wartości parzyste
+}
+
+void zad421c(int n, int tab[]) {
+    for (int i = 0; i < n; i++) tab[i] *= 2;
+}
+
+void zad421d(int n, int tab[]) {
+    for (int i = 0; i < n; i++) tab[i] = abs(tab[i]);
+}
+
+void wypisz(int n, int tab[]) {
+    for (int i = 0; i < n; i++) printf("%d ", tab[i]);
+    printf("\n");
+}
+
+int main() {
+    int tab[5] = {1, -2, 3, -4, 5};
+
+    printf("Przed: "); wypisz(5, tab);
+    zad421d(5, tab);  // np. absolutna wartość
+    printf("Po 421d: "); wypisz(5, tab);
+
+    zad421a(5, tab);  // wyzeruj
+    printf("Po 421a: "); wypisz(5, tab);
+
+    zad421b(5, tab);  // indeks * 2
+    printf("Po 421b: "); wypisz(5, tab);
+
+    zad421c(5, tab);  // podwój wartości
+    printf("Po 421c: "); wypisz(5, tab);
+
+    return 0;
+}
+// 4.2.2
+double srednia(int n, int tab[]) {
+    int suma = 0;
+    for (int i = 0; i < n; i++) suma += tab[i];
+    return (double)suma / n;
+}
+
+int suma_elementow(int n, int tab[]) {
+    int suma = 0;
+    for (int i = 0; i < n; i++) suma += tab[i];
+    return suma;
+}
+
+int suma_kwadratow(int n, int tab[]) {
+    int suma = 0;
+    for (int i = 0; i < n; i++) suma += tab[i] * tab[i];
+    return suma;
+}
+
+int main() {
+    int tab[4] = {1, 2, 3, 4};
+    printf("Średnia: %.2f\n", srednia(4, tab));
+    printf("Suma: %d\n", suma_elementow(4, tab));
+    printf("Suma kwadratów: %d\n", suma_kwadratow(4, tab));
+    return 0;
+}
+// 4.2.3
+double srednia_const(int n, const int tab[]) {
+    int suma = 0;
+    for (int i = 0; i < n; i++) suma += tab[i];
+    return (double)suma / n;
+}
+
+int main() {
+    const int tab[] = {10, 20, 30};
+    printf("Średnia: %.2f\n", srednia_const(3, tab));
+    return 0;
+}
+
+// 4.2.4
+double srednia_geometryczna(int n, const unsigned int tab[]) {
+    double iloczyn = 1.0;
+    for (int i = 0; i < n; i++) iloczyn *= tab[i];
+    return pow(iloczyn, 1.0 / n);
+}
+
+int main() {
+    unsigned int tab[] = {2, 8};
+    printf("Średnia geometryczna: %.2f\n", srednia_geometryczna(2, tab));
+    return 0;
+}
+// 4.2.5
+int najwieksza_pierwsza_mniejsza_od(int n) {
+    bool *czy_pierwsza = malloc(n * sizeof(bool));
+    for (int i = 2; i < n; i++) czy_pierwsza[i] = true;
+
+    for (int i = 2; i * i < n; i++) {
+        if (czy_pierwsza[i]) {
+            for (int j = i * i; j < n; j += i)
+                czy_pierwsza[j] = false;
+        }
+    }
+
+    for (int i = n - 1; i >= 2; i--) {
+        if (czy_pierwsza[i]) {
+            free(czy_pierwsza);
+            return i;
+        }
+    }
+
+    free(czy_pierwsza);
+    return -1;
+}
+
+int main() {
+    int n = 20;
+    printf("Największa liczba pierwsza < %d to %d\n", n, najwieksza_pierwsza_mniejsza_od(n));
+    return 0;
+}
+// 4.2.6
+void zad426a(int n, int tab1[], int tab2[]) {
+    for (int i = 0; i < n; i++) tab2[i] = tab1[i];
+}
+
+void zad426b(int n, int tab1[], int tab2[]) {
+    for (int i = 0; i < n; i++) tab2[i] = tab1[n - 1 - i];
+}
+
+int main() {
+    int tab1[5] = {1, 2, 3, 4, 5};
+    int tab2[5];
+
+    zad426a(5, tab1, tab2);
+    printf("tab2 (kopiowanie): ");
+    for (int i = 0; i < 5; i++) printf("%d ", tab2[i]);
+    printf("\n");
+
+    zad426b(5, tab1, tab2);
+    printf("tab2 (odwrócenie): ");
+    for (int i = 0; i < 5; i++) printf("%d ", tab2[i]);
+    printf("\n");
+
+    return 0;
+}
+
+// 4.2.7
+void suma(int n, int tab1[], int tab2[], int tab3[]) {
+    for (int i = 0; i < n; i++) tab3[i] = tab1[i] + tab2[i];
+}
+
+void maksimum(int n, int tab1[], int tab2[], int tab3[]) {
+    for (int i = 0; i < n; i++) tab3[i] = (tab1[i] > tab2[i]) ? tab1[i] : tab2[i];
+}
+
+void przepisz(int n, int tab1[], int tab2[], int tab3[]) {
+    for (int i = 0; i < n; i++) {
+        tab1[i] = tab2[i];
+        tab2[i] = tab3[i];
+        tab3[i] = tab1[i];  // po przepisaniu
+    }
+}
+
+int main() {
+    int tab1[4] = {1, 3, 5, 7};
+    int tab2[4] = {2, 2, 6, 6};
+    int tab3[4];
+
+    suma(4, tab1, tab2, tab3);
+    printf("Suma: ");
+    for (int i = 0; i < 4; i++) printf("%d ", tab3[i]);
+    printf("\n");
+
+    maksimum(4, tab1, tab2, tab3);
+    printf("Maksimum: ");
+    for (int i = 0; i < 4; i++) printf("%d ", tab3[i]);
+    printf("\n");
+
+    przepisz(4, tab1, tab2, tab3);
+    printf("Po przepisaniu: tab1: ");
+    for (int i = 0; i < 4; i++) printf("%d ", tab1[i]);
+    printf("\n");
+
+    return 0;
+}
+// 4.2.8
+void zad428a(int n, double tab1[], double tab2[], double tab3[]) {
+    for (int i = 0; i < n; i++) {
+        tab3[i] = tab1[i];
+        tab3[n + i] = tab2[i];
+    }
+}
+
+void zad428b(int n, double tab1[], double tab2[], double tab3[]) {
+    for (int i = 0; i < n; i++) {
+        if (i % 2 == 0)
+            tab3[i] = tab1[i];
+        else
+            tab3[i] = tab2[i];
+    }
+}
+
+int main() {
+    double tab1[4] = {1.1, 2.2, 3.3, 4.4};
+    double tab2[4] = {5.5, 6.6, 7.7, 8.8};
+    double tab3[8];
+
+    zad428a(4, tab1, tab2, tab3);
+    printf("tab3 (łącznie): ");
+    for (int i = 0; i < 8; i++) printf("%.1f ", tab3[i]);
+    printf("\n");
+
+    zad428b(4, tab1, tab2, tab3);
+    printf("tab3 (naprzemiennie): ");
+    for (int i = 0; i < 4; i++) printf("%.1f ", tab3[i]);
+    printf("\n");
+
+    return 0;
+}
+
+// 4.2.9
+void sortuj_trzy(int *a, int *b, int *c) {
+    int temp;
+    if (*a > *b) { temp = *a; *a = *b; *b = temp; }
+    if (*b > *c) { temp = *b; *b = *c; *c = temp; }
+    if (*a > *b) { temp = *a; *a = *b; *b = temp; }
+    // Po tej funkcji: *a = najmniejsza, *b = środkowa, *c = największa
+}
+
+void przetworz_tablice(int n, int tab1[], int tab2[], int tab3[]) {
+    for (int i = 0; i < n; i++) {
+        int a = tab1[i];
+        int b = tab2[i];
+        int c = tab3[i];
+
+        sortuj_trzy(&a, &b, &c);
+
+        tab1[i] = c;  // największa
+        tab2[i] = b;  // środkowa
+        tab3[i] = a;  // najmniejsza
+    }
+}
+
+int main() {
+    int tab1[] = {4, 8, 2};
+    int tab2[] = {7, 5, 3};
+    int tab3[] = {6, 9, 1};
+    int n = 3;
+
+    przetworz_tablice(n, tab1, tab2, tab3);
+
+    printf("tab1 (największe): ");
+    for (int i = 0; i < n; i++) printf("%d ", tab1[i]);
+    printf("\n");
+
+    printf("tab2 (średnie): ");
+    for (int i = 0; i < n; i++) printf("%d ", tab2[i]);
+    printf("\n");
+
+    printf("tab3 (najmniejsze): ");
+    for (int i = 0; i < n; i++) printf("%d ", tab3[i]);
+    printf("\n");
+
+    return 0;
+}
