@@ -6,7 +6,7 @@ void zad421a(int n, int tab[]) {
 }
 
 void zad421b(int n, int tab[]) {
-    for (int i = 0; i < n; i++) tab[i] = i * 2;  // np. wartości parzyste
+    for (int i = 0; i < n; i++) tab[i] = i * 2;  
 }
 
 void zad421c(int n, int tab[]) {
@@ -25,18 +25,23 @@ void wypisz(int n, int tab[]) {
 int main() {
     int tab[5] = {1, -2, 3, -4, 5};
 
-    printf("Przed: "); wypisz(5, tab);
-    zad421d(5, tab);  // np. absolutna wartość
-    printf("Po 421d: "); wypisz(5, tab);
+    printf("Przed: "); 
+    wypisz(5, tab);
+    zad421d(5, tab); 
+    printf("Po 421d: "); 
+    wypisz(5, tab);
 
-    zad421a(5, tab);  // wyzeruj
-    printf("Po 421a: "); wypisz(5, tab);
+    zad421a(5, tab); 
+    printf("Po 421a: ");
+    wypisz(5, tab);
 
-    zad421b(5, tab);  // indeks * 2
-    printf("Po 421b: "); wypisz(5, tab);
+    zad421b(5, tab);  
+    printf("Po 421b: "); 
+    wypisz(5, tab);
 
-    zad421c(5, tab);  // podwój wartości
-    printf("Po 421c: "); wypisz(5, tab);
+    zad421c(5, tab);  
+    printf("Po 421c: "); 
+    wypisz(5, tab);
 
     return 0;
 }
