@@ -1,0 +1,3 @@
+/home/oxy/Projekty_C/Wyklady/25_02_21/2/cmake-build-debug/CMakeFiles/2.dir
+/home/oxy/Projekty_C/Wyklady/25_02_21/2/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/oxy/Projekty_C/Wyklady/25_02_21/2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
